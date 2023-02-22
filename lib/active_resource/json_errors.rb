@@ -13,6 +13,9 @@ module ActiveResource
       case data
       when String
         from_string(data, save_cache)
+      when Array
+        data = { errors: data }
+        from_hash(data, save_cache)
       else
         from_hash(data, save_cache)
       end
